@@ -15,19 +15,16 @@ def resource_path(relative_path):
 
 
 
-# ==========================================================
-# CONFIGURAÇÕES GLOBAIS
-# ==========================================================
+
+#CONFIGURAÇÕES GLOBAIS
+
 ctk.set_appearance_mode("light")   # "dark" ou "light"
 ctk.set_default_color_theme("blue")
 
 APP_WIDTH = 820
 APP_HEIGHT = 560
 
-
-# ==========================================================
-# FUNÇÕES
-# ==========================================================
+#FUNÇÕES
 def pdf_para_word():
     arquivo = filedialog.askopenfilename(
         title="Selecionar PDF",
@@ -115,22 +112,14 @@ def extrair_arquivos():
     status_label.configure(text="✔ Extração finalizada com sucesso")
     messagebox.showinfo("Finalizado", "Arquivos extraídos com sucesso!")
 
-
-# ==========================================================
-# JANELA PRINCIPAL
-# ==========================================================
+#JANELA PRINCIPAL
 app = ctk.CTk()
 app.title("Extrator do Campaner")
 app.geometry(f"{APP_WIDTH}x{APP_HEIGHT}")
 app.resizable(False, False)
 app.iconbitmap(resource_path("icon.ico"))
 
-
-
-
-# ==========================================================
-# HEADER
-# ==========================================================
+#HEADER
 header = ctk.CTkFrame(app, height=90, corner_radius=0)
 header.pack(fill="x")
 
@@ -147,17 +136,11 @@ ctk.CTkLabel(
     text_color="gray"
 ).pack()
 
-
-# ==========================================================
-# CONTEÚDO
-# ==========================================================
+#CONTEÚDO
 content = ctk.CTkFrame(app, corner_radius=16)
 content.pack(padx=40, pady=25, fill="both", expand=True)
 
-
-# ==========================================================
-# CONVERSÃO
-# ==========================================================
+#CONVERSÃO
 ctk.CTkLabel(
     content,
     text="Conversão de Documentos",
@@ -186,15 +169,10 @@ ctk.CTkButton(
 ).pack(side="left", padx=10)
 
 
-# ==========================================================
-# DIVISOR
-# ==========================================================
+#DIVISOR
 ctk.CTkFrame(content, height=2, fg_color="#E5E7EB").pack(fill="x", pady=25)
 
-
-# ==========================================================
-# EXTRAÇÃO
-# ==========================================================
+#EXTRAÇÃO
 ctk.CTkLabel(
     content,
     text="Descompactação de Arquivos",
@@ -210,10 +188,7 @@ ctk.CTkButton(
     command=extrair_arquivos
 ).pack(pady=10)
 
-
-# ==========================================================
-# PROGRESSO
-# ==========================================================
+#PROGRESSO
 progress_bar = ctk.CTkProgressBar(content, width=420)
 progress_bar.set(0)
 progress_bar.pack(pady=18)
@@ -226,10 +201,7 @@ status_label = ctk.CTkLabel(
 )
 status_label.pack()
 
-
-# ==========================================================
-# FOOTER
-# ==========================================================
+#FOOTER
 footer = ctk.CTkFrame(app, height=40, corner_radius=0)
 footer.pack(fill="x", side="bottom")
 
